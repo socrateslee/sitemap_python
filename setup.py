@@ -2,7 +2,7 @@
 
 sdict = {
     'name': 'sitemap_python',
-    'version': "0.1.0",
+    'version': "0.1.1",
     'license': 'MIT',
     'packages': ['sitemap'],
     'zip_safe': False,
