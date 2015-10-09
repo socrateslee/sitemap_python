@@ -63,7 +63,7 @@ class Sitemap(object):
                 if item[field]:
                     url.append('<%s>%s</%s>'\
                                % (field, item[field], field))
-            url.append('</url')
+            url.append('</sitemap>')
             ret.append('\n'.join(url))
         return SITEMAPINDEX_TEMPLATE % ('\n'.join(ret))
 
