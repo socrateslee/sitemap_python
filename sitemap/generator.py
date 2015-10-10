@@ -7,9 +7,9 @@ URLSET_TEMPLATE = '''<?xml version="1.0" encoding="UTF-8"?>
 </urlset>'''
 
 SITEMAPINDEX_TEMPLATE = '''<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 %s
-</urlset>'''
+</sitemapindex>'''
 
 
 def datetime_to_isoformat(d):
