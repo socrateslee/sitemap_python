@@ -25,17 +25,17 @@ sitemap_index_xml = sitemap_index.generate()
 
 
 ### Ping search engine
-Currently support ping Google and Bing.
+Currently support ping Google and Bing with sitemap urls.
 
 ```
 import sitemap.ping as ping
 
 ping.ping("google", "http://www.example.com/sitemap.xml")
-ping.ping_urls("bing", ["http://www.example.com/sitemap.xml")
+ping.ping_urls("bing", ["http://www.example.com/sitemap.xml"])
 ```
 
 ### Push url to Baidu
-Related document available [at here](http://zhanzhang.baidu.com/college/courseinfo?id=267&page=2#h2_article_title14).
+Push urls directly to Baidu. Related document available [at here](http://zhanzhang.baidu.com/college/courseinfo?id=267&page=2#h2_article_title14).
 
 ```
 import sitemap.baidu as baidu
