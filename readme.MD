@@ -43,3 +43,25 @@ bp = baidu.BaiduPush("http://www.example.com", "<YOUR_KEY>")
 bp.add("http://www.example.com/example.html")
 bp.flush()
 ```
+
+### Verify the spider ip address
+__sitemap.spider__ can be use to verify whether the ip address of spider is genius.
+
+Example:
+
+```
+from sitemap.spider import get_verified_spider_name
+
+# spider_name will be None if no search engine is matched
+spider_name = get_verified_spider_name("66.249.65.219")
+```
+
+The method __get\_verified\_spider\_name__ has uses _socket.gethostbyaddr_, which may be slow in some cases. So make __guess\_spider\_name\_from\_ua__ method may filter out several results via User-Agent.
+
+```
+from sitemap.spider import get_verified_spider_name, guess_spider_name_from_ua
+
+spider_name = guess_spider_name_from_ua(spider_ua)
+if spider_name:
+    spider_name = get_verified_spider_name(spider_ip)
+```
