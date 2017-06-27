@@ -6,9 +6,10 @@ http://zhanzhang.baidu.com/college/courseinfo?id=267&page=2#h2_article_title14
 import sys
 import json
 import urllib2
-
+import six
 
 API_BASE = "http://data.zz.baidu.com/urls?site=%s&token=%s"
+
 
 class BaiduPush(object):
     def __init__(self, domain, key, chunk_size=100):
@@ -32,6 +33,8 @@ class BaiduPush(object):
 
     def flush(self):
         urls = '\n'.join(self._urls)
+        if isinstance(urls, six.text_type):
+            urls = urls.encode('utf-8')
         self._urls = []
         req = urllib2.Request(url=self._api, data=urls,
                               headers={'Content-Type': 'text/plain'})
