@@ -4,12 +4,13 @@ A toolkit for verifying the ip address of search engine spiders.
 import socket
 
 HOST_NAME_MAP = {
-    'baidu': '.crawl.baidu.com',
+    'baidu': ('.baidu.com', '.baidu.jp'),
     'sogou': '.crawl.sogou.com',
-    'google': '.googlebot.com',
+    'google': ('.googlebot.com', '.google.com'),
     'bing': '.search.msn.com',
-    'yandex': '.yandex.com',
-    'ahrefs': '.ahrefs.com'
+    'yandex': ('.yandex.com', '.yandex.ru', '.yandex.net'),
+    'ahrefs': '.ahrefs.com',
+    'yahoo': '.yahoo.net',
 }
 
 UA_MAP = {
@@ -20,14 +21,25 @@ UA_MAP = {
     'yandex': 'yandexbot',
     'ahrefs': 'ahrefsbot',
     'shenma': 'yisouspider',
-    '360': '360spider'
+    '360': '360spider',
+    'yahoo': 'yahoo! slurp',
+    'ddg': 'duckduckbot',
 }
+
+DUCKDUCKGO = ['72.94.249.34',
+              '72.94.249.35',
+              '72.94.249.36',
+              '72.94.249.37',
+              '72.94.249.38']
 
 
 def get_verified_spider_name(ip, spider_name=None):
     '''
     Return verified spider name based on ip address.
     '''
+    # check for duckduckgo
+    if ip in DUCKDUCKGO:
+        return 'ddg'
     hostnames = []
     try:
         (hostname, aliaslist, __) = socket.gethostbyaddr(ip)
