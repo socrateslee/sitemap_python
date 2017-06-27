@@ -3,6 +3,7 @@ Submit sitemap url to search engine.
 '''
 import sys
 import urllib2
+import six
 
 PING_MAP = {
     'google': 'http://www.google.com/webmasters/sitemaps/ping?sitemap=%s',
@@ -13,7 +14,7 @@ PING_MAP = {
 def ping(engine, url):
     base_url = PING_MAP.get(engine)
     if not base_url:
-       print "Search engine %s not supported." % engine
+       six.print_("Search engine %s not supported." % engine)
        return
     url = base_url % url
     resp = urllib2.urlopen(url, timeout=60)
